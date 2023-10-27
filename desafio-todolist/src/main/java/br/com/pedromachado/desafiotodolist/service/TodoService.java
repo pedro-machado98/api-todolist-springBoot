@@ -2,6 +2,7 @@ package br.com.pedromachado.desafiotodolist.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.pedromachado.desafiotodolist.entity.Todo;
@@ -17,19 +18,23 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    public List<Todo> create() {
-        
+    public List<Todo> create(Todo todo) {
+        todoRepository.save(todo);
+        return read();
     }
     
     public List<Todo> read() {
-        
+        Sort sort = Sort.by("prioridade").descending();
+        return todoRepository.findAll(sort);
     }
 
-    public List<Todo> update() {
-        
+    public List<Todo> update(Todo todo) {
+        todoRepository.save(todo);
+        return read(); 
     }
 
-    public List<Todo> delete() {
-        
+    public List<Todo> delete(Long id) {
+        todoRepository.deleteById(id);
+        return read();
     }
 }
