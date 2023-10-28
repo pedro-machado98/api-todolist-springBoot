@@ -16,7 +16,7 @@ import br.com.pedromachado.desafiotodolist.service.TodoService;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/todos")
+@RequestMapping(value = "/todos")
 public class TodoController {
 
     private TodoService todoService;
@@ -36,9 +36,8 @@ public class TodoController {
         return todoService.read();
     }
 
-    @PutMapping
-    @Transactional
-    List<Todo> update(Todo todo){
+    @PutMapping()
+    List<Todo> update(@RequestBody Todo todo){
         return todoService.update(todo);
     }
 

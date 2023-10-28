@@ -11,7 +11,6 @@ import br.com.pedromachado.desafiotodolist.repository.TodoRepository;
 @Service
 public class TodoService {
 
-
     private TodoRepository todoRepository;
 
     public TodoService(TodoRepository todoRepository) {
