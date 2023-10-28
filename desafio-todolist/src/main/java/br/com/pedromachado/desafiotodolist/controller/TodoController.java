@@ -37,11 +37,13 @@ public class TodoController {
     }
 
     @PutMapping
+    @Transactional
     List<Todo> update(Todo todo){
         return todoService.update(todo);
     }
 
     @DeleteMapping("{id}")
+    @Transactional
     List<Todo> delete(@PathVariable Long id){
         return todoService.delete(id);
     }
